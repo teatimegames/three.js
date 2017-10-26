@@ -10361,23 +10361,23 @@
 		}(),
 
 		rotateOnWorldAxis: function () {
-			
+
 			// rotate object on axis in world space
 			// axis is assumed to be normalized
 			// method assumes no rotated parent
 
 			var q1 = new Quaternion();
-			
+
 			return function rotateOnWorldAxis( axis, angle ) {
-			
+
 				q1.setFromAxisAngle( axis, angle );
-			
+
 				this.quaternion.premultiply( q1 );
-			
+
 				return this;
-			
+
 			};
-			
+
 		}(),
 
 		rotateX: function () {
@@ -20661,11 +20661,7 @@
 
 		}
 
-		if ( typeof window !== 'undefined' ) {
-
-			window.addEventListener( 'vrdisplaypresentchange', onVRDisplayPresentChange, false );
-
-		}
+		renderer.domElement.addEventListener( 'vrdisplaypresentchange', onVRDisplayPresentChange, false );
 
 		//
 
@@ -20814,7 +20810,7 @@
 
 		this.dispose = function () {
 
-			window.removeEventListener( 'vrdisplaypresentchange', onVRDisplayPresentChange );
+			renderer.domElement.removeEventListener( 'vrdisplaypresentchange', onVRDisplayPresentChange );
 
 		};
 
@@ -21584,7 +21580,7 @@
 
 		// Clearing
 
-		this.getClearColor = function() {
+		this.getClearColor = function () {
 
 			return background.getClearColor();
 
@@ -21596,13 +21592,13 @@
 
 		};
 
-		this.getClearAlpha = function() {
+		this.getClearAlpha = function () {
 
 			return background.getClearAlpha();
 
 		};
 
-		this.setClearAlpha = function() {
+		this.setClearAlpha = function () {
 
 			background.setClearAlpha.apply( background, arguments );
 
